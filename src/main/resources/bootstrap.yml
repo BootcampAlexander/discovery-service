@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: discovery-service
+  cloud:
+    config:
+      enabled: 'true'
+      uri: http://config-server:8888
+server:
+  port: 7001
+eureka:
+  client:
+    #telling the server not to register himself in the service registry
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:7001/eureka
+  server:
+    waitTimeInMsWhenSyncEmpty: 0    #wait time for subsequent sync
+logging:
+  level:
+    '[com.netflix.eureka]': 'OFF'
+    '[com.netflix.discovery]': 'OFF'
